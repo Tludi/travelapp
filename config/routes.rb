@@ -1,4 +1,10 @@
 Travelapp::Application.routes.draw do
+  #resources :waypoints
+
+  resources :trips do
+    resources :waypoints
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
