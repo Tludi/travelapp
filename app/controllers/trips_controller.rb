@@ -4,6 +4,6 @@ class TripsController < ApplicationController
     @trips = Trip.all
     @trip = Trip.first
     @waypoints = @trip.waypoints
-    render json: @trips
+    render json: Trip.all
   end
 end
