@@ -26,7 +26,7 @@ module Travelapp
     # config.i18n.default_locale = :de
     config.middleware.use Rack::Cors do
       allow do
-        origins '*'
+        origins 'localhost', '127.0.0.1','*'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
