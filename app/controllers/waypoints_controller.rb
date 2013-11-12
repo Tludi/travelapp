@@ -1,53 +1,77 @@
 class WaypointsController < ApplicationController
-  
+  before_action :set_waypoint, only: [:show, :edit, :update, :destroy]
+
+  # GET /waypoints
+  # GET /waypoints.json
   def index
-    @trip = Trip.first
-    @waypoints = @trip.waypoints
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @waypoints }
-    end
+    @waypoints = Waypoint.all
   end
 
+  # GET /waypoints/1
+  # GET /waypoints/1.json
+  def show
+  end
+
+  # GET /waypoints/new
   def new
-    @trip = Trip.first
-    @waypoint = @trip.waypoints.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @waypoint }
-    end
+    @trip = Trip.find(params[:trip_id])
+    @waypoint = Waypoint.new
   end
 
+  # GET /waypoints/1/edit
+  def edit
+  end
+
+  # POST /waypoints
+  # POST /waypoints.json
   def create
-    @trip = Trip.first
-    @waypoint = @trip.waypoints.new(params[:waypoint])
+    @trip = Trip.find(params[:trip_id])
+    @waypoint = @trip.waypoints.build(waypoint_params)
+    # @waypoint = Waypoint.new(waypoint_params)
 
     respond_to do |format|
       if @waypoint.save
-        format.html { redirect_to :waypoint, notice: 'waypoint was successfully created.' }
-        format.json { render json: :waypoint, status: :created, location: @waypoint }
+        format.html { redirect_to trips_path, notice: 'Waypoint was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @trip }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @waypoint.errors, status: :unprocessable_entity }
       end
     end
   end
-  
-  def update
 
+  # PATCH/PUT /waypoints/1
+  # PATCH/PUT /waypoints/1.json
+  def update
+    respond_to do |format|
+      if @waypoint.update(waypoint_params)
+        format.html { redirect_to @waypoint, notice: 'Waypoint was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @waypoint.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
+  # DELETE /waypoints/1
+  # DELETE /waypoints/1.json
   def destroy
-    @waypoint = Waypoint.find(params[:id])
     @waypoint.destroy
-
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to waypoints_url }
       format.json { head :no_content }
     end
   end
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_waypoint
+      @waypoint = Waypoint.find(params[:id])
+    end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def waypoint_params
+      params.require(:waypoint).permit(:name, :location, :waypost, :lat, :lng, :trip_id)
+    end
 end
