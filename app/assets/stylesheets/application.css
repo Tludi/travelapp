@@ -12,3 +12,12 @@
  *= require leaflet
  *= require_tree .
  */
+
+ body.dark {
+  color:#f0f1f1;
+  background-color: #4a4d4e;
+ }
+
+.debug_dump {
+  background-color: #333;
+}
