@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/mutablestate/ink2-rails.git
-  revision: 7245923b1477cf8bb08e7b09ce13a2e0d8823c70
-  specs:
-    ink2-rails (0.1.2)
-      rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,8 +39,6 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.2)
-    font-awesome-rails (4.0.3.0)
-      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -128,8 +119,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   coffee-rails (~> 4.0.0)
-  font-awesome-rails
-  ink2-rails!
   jbuilder (~> 1.2)
   jquery-rails
   leaflet-rails

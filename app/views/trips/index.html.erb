@@ -1,35 +1,28 @@
 <h1>Listing trips</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name:</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trips.each do |trip| %>
-      <tr>
-        <td><%= trip.name %></td>
-        <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-        <% unless trip.waypoints.empty? %>
-          <td>this has <%= trip.waypoints.count %> waypoints, add <%= link_to "another", new_trip_waypoint_path(trip) %> </td>
-          <% trip.waypoints.each do |waypoint| %>
-            <td><%= link_to waypoint.name, waypoint %></td>
-          <% end %>
-        <% else %>
-          <td>This trip needs waypoints. Add a <%= link_to "waypoint", new_trip_waypoint_path(trip) %></td>
+<div class="column-group gutters">
+        <% @trips.each do |trip| %>
+          <div class="large-50">
+            <table>
+              <tr>
+                <td><%= trip.name %></td>
+                <td><%= link_to 'Show', trip %></td>
+                <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+                <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <tr>
+              <% unless trip.waypoints.empty? %>
+                <td>this has <%= trip.waypoints.count %> waypoints, add <%= link_to "another", new_trip_waypoint_path(trip) %> </td>
+                <% trip.waypoints.each do |waypoint| %>
+                  <td><%= link_to waypoint.name, waypoint %></td>
+                <% end %>
+              <% else %>
+                <td>This trip needs waypoints. Add a <%= link_to "waypoint", new_trip_waypoint_path(trip) %></td>
+              <% end %>
+              </tr>
+            </table>
+          </div>
         <% end %>
-    <% end %>
-  </tbody>
-</table>
-
+</div>
 <br>
 
 <%= link_to 'New Trip', new_trip_path %> |
