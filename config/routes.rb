@@ -1,14 +1,26 @@
 Travelapp::Application.routes.draw do
 
+  # get "user_sessions/new"
+  # get "user_sessions/create"
+  # get "user_sessions/destroy"
+  resources :user_sessions
+  resources :users do
+    resources :trips do
+      resources :waypoints
+    end
+  end
+
+
+  get 'login' => 'user_sessions#new', :as => :login
+  get 'logout' => 'user_sessions#destroy', :as => :logout
+  
   get "dashboard/index"
   get "geomap/index"
   resources :waypoints
 
   #resources :waypoints
 
-  resources :trips do
-    resources :waypoints
-  end
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,19 @@
+<h2>User</h2>
+<p>
+  <strong>Name:</strong>
+  <%= @user.username %>
+</p>
+
+<h2>Here are your logged trips:</h2>
+<div>
+<% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.name %></td>
+    <td><%= trip.waypoints.name %></td>
+    <td></td>
+  </tr>
+<% end %>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Dashboard', :root %>
