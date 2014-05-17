@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
 
   has_many :trips
+  has_one :account, :dependent => :destroy
 end

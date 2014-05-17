@@ -3,15 +3,17 @@
 <head>
   <title>Travelapp</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="dark">
   <div id="nav">
     <% if current_user %>
-      <span>Hi <%= current_user.username %>! |</span>
+      <span>Welcome to <%= current_user.account.name %> |</span>
+      <span> Hi <%= current_user.username %>! |</span>
       <%= link_to "Dashboard |", :root %> 
       <%= link_to "Edit Profile |", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout, method: :post %>
+      <%= link_to "Logout", logout_path %>
     <% else %>
       <%= link_to "Register", new_user_path %> |
       <%= link_to "Login", :login %>

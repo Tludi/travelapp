@@ -1,5 +1,8 @@
 <h1>Listing users</h1>
 
+<% @accounts.each do |account| %>
+  <%= account.user.username %>'s account <br>
+<% end -%>
 <table>
   <thead>
     <tr>
@@ -15,7 +18,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.username %></td>
+        <td><%= user.username %> coolio</td>
         <td></td>
         <td></td>
         <td><%= link_to 'Show', user %></td>

@@ -41,13 +41,20 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'guard-minitest', group: :development
+group :development, :test do
+  gem 'guard-minitest'
+  gem 'minitest-spec-rails'
+  gem 'capybara_minitest_spec' # for capybara integration and spec matchers
+  gem 'capybara-webkit' # for headless javascript tests
+  gem 'turn' # for prettier test output
+end
+# gem 'capybara'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

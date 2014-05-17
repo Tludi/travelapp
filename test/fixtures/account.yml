@@ -1,0 +1,9 @@
+# account.yml
+
+first:
+  name: FirstAccount
+  user_id: 1
+
+second:
+  name: SecondAccount
+  user_id: 2

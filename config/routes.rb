@@ -5,6 +5,7 @@ Travelapp::Application.routes.draw do
   # get "user_sessions/destroy"
   resources :user_sessions
   resources :users do
+    resources :account
     resources :trips do
       resources :waypoints
     end
